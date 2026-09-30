@@ -1,0 +1,6 @@
+{
+  "name": "TENNET Portfolio",
+  "description": "Modern personal portfolio and creative web development studio showcasing websites and digital experiences built by Tennet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

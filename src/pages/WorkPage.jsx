@@ -1,19 +1,28 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Filter, ArrowUpRight, ArrowRight, Grid, List, CheckCircle2, ExternalLink } from 'lucide-react';
-import BrowserMockup from '../components/BrowserMockup.jsx';
-import { projects, projectCategories } from '../data/projects.js';
+import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import {
+  Search,
+  Filter,
+  ArrowUpRight,
+  ArrowRight,
+  Grid,
+  List,
+  CheckCircle2,
+  ExternalLink,
+} from "lucide-react";
+import BrowserMockup from "../components/BrowserMockup.jsx";
+import { projects, projectCategories } from "../data/projects.js";
 
 export default function WorkPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState('detailed'); // 'detailed' | 'grid'
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState("detailed"); // 'detailed' | 'grid'
 
   // Filter projects by category and search term
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       const matchesCategory =
-        selectedCategory === 'All' ||
+        selectedCategory === "All" ||
         project.category.toLowerCase() === selectedCategory.toLowerCase();
 
       const query = searchQuery.toLowerCase().trim();
@@ -44,33 +53,41 @@ export default function WorkPage() {
                 Work &amp; Case Studies
               </h1>
               <p className="mt-3 text-sm sm:text-base text-neutral-300 max-w-xl">
-                A complete record of custom-designed web applications, responsive e-commerce storefronts, and architectural platforms crafted with React.
+                A complete record of custom-designed web applications,
+                responsive e-commerce storefronts, and architectural platforms
+                crafted with React.
               </p>
             </div>
 
             <div className="text-xs font-mono text-neutral-400 flex items-center gap-4">
               <span>
-                Showing <strong className="text-white">{filteredProjects.length}</strong> of {projects.length} Works
+                Showing{" "}
+                <strong className="text-white">
+                  {filteredProjects.length}
+                </strong>{" "}
+                of {projects.length} Works
               </span>
               <div className="hidden sm:flex items-center gap-1 bg-[#12141c] p-1 rounded-md border border-white/10">
                 <button
                   type="button"
-                  onClick={() => setViewMode('detailed')}
+                  onClick={() => setViewMode("detailed")}
                   className={`p-1.5 rounded transition-colors cursor-pointer ${
-                    viewMode === 'detailed' ? 'bg-blue-600 text-white' : 'text-neutral-400 hover:text-white'
+                    viewMode === "detailed"
+                      ? "bg-blue-600 text-white"
+                      : "text-neutral-400 hover:text-white"
                   }`}
-                  title="Detailed View"
-                >
+                  title="Detailed View">
                   <List className="w-4 h-4" />
                 </button>
                 <button
                   type="button"
-                  onClick={() => setViewMode('grid')}
+                  onClick={() => setViewMode("grid")}
                   className={`p-1.5 rounded transition-colors cursor-pointer ${
-                    viewMode === 'grid' ? 'bg-blue-600 text-white' : 'text-neutral-400 hover:text-white'
+                    viewMode === "grid"
+                      ? "bg-blue-600 text-white"
+                      : "text-neutral-400 hover:text-white"
                   }`}
-                  title="Compact Grid View"
-                >
+                  title="Compact Grid View">
                   <Grid className="w-4 h-4" />
                 </button>
               </div>
@@ -91,10 +108,9 @@ export default function WorkPage() {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-3.5 py-1.5 text-xs font-medium rounded-md whitespace-nowrap transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-blue-600 text-white font-semibold shadow-md shadow-blue-600/30'
-                      : 'bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10'
-                  }`}
-                >
+                      ? "bg-blue-600 text-white font-semibold shadow-md shadow-blue-600/30"
+                      : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10"
+                  }`}>
                   {category}
                 </button>
               );
@@ -114,9 +130,8 @@ export default function WorkPage() {
             {searchQuery && (
               <button
                 type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-neutral-500 hover:text-white"
-              >
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-neutral-500 hover:text-white">
                 Clear
               </button>
             )}
@@ -126,19 +141,20 @@ export default function WorkPage() {
         {/* Projects View */}
         {filteredProjects.length === 0 ? (
           <div className="py-24 text-center bg-[#12141c] rounded-2xl border border-white/5 p-8">
-            <p className="text-neutral-400 text-sm">No projects matched your criteria.</p>
+            <p className="text-neutral-400 text-sm">
+              No projects matched your criteria.
+            </p>
             <button
               type="button"
               onClick={() => {
-                setSelectedCategory('All');
-                setSearchQuery('');
+                setSelectedCategory("All");
+                setSearchQuery("");
               }}
-              className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-md transition-colors cursor-pointer"
-            >
+              className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-md transition-colors cursor-pointer">
               Reset Filters
             </button>
           </div>
-        ) : viewMode === 'detailed' ? (
+        ) : viewMode === "detailed" ? (
           /* Detailed View */
           <div className="space-y-24">
             {filteredProjects.map((project, index) => {
@@ -147,14 +163,16 @@ export default function WorkPage() {
               return (
                 <article
                   key={project.id}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0d0f17] p-6 sm:p-10 rounded-2xl border border-white/5 hover:border-blue-500/30 transition-all duration-300"
-                >
-                  <div className={`lg:col-span-7 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0d0f17] p-6 sm:p-10 rounded-2xl border border-white/5 hover:border-blue-500/30 transition-all duration-300">
+                  <div
+                    className={`lg:col-span-7 ${
+                      isReversed ? "lg:order-2" : "lg:order-1"
+                    }`}>
                     <Link to={`/work/${project.id}`} className="block group">
                       <BrowserMockup
                         src={project.image}
                         alt={project.title}
-                        url={`https://${project.id}.tennet.studio`}
+                        url={`${project.liveUrl}`}
                         title={project.title}
                         category={project.category}
                         liveUrl={project.liveUrl}
@@ -163,22 +181,33 @@ export default function WorkPage() {
                     </Link>
                   </div>
 
-                  <div className={`lg:col-span-5 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div
+                    className={`lg:col-span-5 ${
+                      isReversed ? "lg:order-1" : "lg:order-2"
+                    }`}>
                     <div className="flex items-center gap-3 text-xs font-mono text-neutral-400 mb-2">
-                      <span className="text-xl font-bold text-white">{project.number}</span>
+                      <span className="text-xl font-bold text-white">
+                        {project.number}
+                      </span>
                       <span>/</span>
-                      <span className="uppercase text-blue-400 font-semibold">{project.category}</span>
+                      <span className="uppercase text-blue-400 font-semibold">
+                        {project.category}
+                      </span>
                       <span>·</span>
                       <span>{project.year}</span>
                     </div>
 
                     <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                      <Link to={`/work/${project.id}`} className="hover:text-blue-400 transition-colors">
+                      <Link
+                        to={`/work/${project.id}`}
+                        className="hover:text-blue-400 transition-colors">
                         {project.title}
                       </Link>
                     </h2>
 
-                    <p className="text-xs font-medium text-neutral-400 mt-1">{project.tagline}</p>
+                    <p className="text-xs font-medium text-neutral-400 mt-1">
+                      {project.tagline}
+                    </p>
 
                     <p className="mt-4 text-sm text-neutral-300 leading-relaxed">
                       {project.description}
@@ -189,8 +218,7 @@ export default function WorkPage() {
                       {project.technologies.map((t) => (
                         <span
                           key={t}
-                          className="px-2 py-0.5 rounded bg-blue-950/40 border border-blue-500/20 text-[11px] font-mono text-blue-300"
-                        >
+                          className="px-2 py-0.5 rounded bg-blue-950/40 border border-blue-500/20 text-[11px] font-mono text-blue-300">
                           {t}
                         </span>
                       ))}
@@ -200,8 +228,7 @@ export default function WorkPage() {
                     <div className="mt-8 flex flex-wrap items-center gap-3">
                       <Link
                         to={`/work/${project.id}`}
-                        className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors flex items-center gap-1.5 shadow-md shadow-blue-600/20"
-                      >
+                        className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors flex items-center gap-1.5 shadow-md shadow-blue-600/20">
                         <span>Inspect Case Study</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -211,8 +238,7 @@ export default function WorkPage() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white text-xs font-semibold uppercase tracking-wider rounded-md border border-white/10 transition-colors flex items-center gap-1.5"
-                        >
+                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white text-xs font-semibold uppercase tracking-wider rounded-md border border-white/10 transition-colors flex items-center gap-1.5">
                           <ArrowUpRight className="w-3.5 h-3.5 text-blue-400" />
                           <span>Live Site</span>
                         </a>
@@ -229,8 +255,7 @@ export default function WorkPage() {
             {filteredProjects.map((project) => (
               <article
                 key={project.id}
-                className="group relative bg-[#12141c] rounded-xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between"
-              >
+                className="group relative bg-[#12141c] rounded-xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between">
                 <Link to={`/work/${project.id}`} className="block">
                   <div className="relative aspect-16/10 bg-[#0e1017] overflow-hidden border-b border-white/5">
                     <img
@@ -256,13 +281,14 @@ export default function WorkPage() {
                       </h3>
                       <Link
                         to={`/work/${project.id}`}
-                        className="p-2 rounded-full bg-white/5 group-hover:bg-blue-600 text-neutral-400 group-hover:text-white transition-all shrink-0"
-                      >
+                        className="p-2 rounded-full bg-white/5 group-hover:bg-blue-600 text-neutral-400 group-hover:text-white transition-all shrink-0">
                         <ArrowUpRight className="w-4 h-4" />
                       </Link>
                     </div>
 
-                    <p className="text-xs text-neutral-400 font-medium mt-1">{project.tagline}</p>
+                    <p className="text-xs text-neutral-400 font-medium mt-1">
+                      {project.tagline}
+                    </p>
                     <p className="text-sm text-neutral-300 mt-3 line-clamp-2 leading-relaxed">
                       {project.description}
                     </p>
@@ -273,15 +299,16 @@ export default function WorkPage() {
                       {project.technologies.slice(0, 3).map((tech, i) => (
                         <span key={tech}>
                           {tech}
-                          {i < Math.min(project.technologies.length, 3) - 1 ? ' ·' : ''}
+                          {i < Math.min(project.technologies.length, 3) - 1
+                            ? " ·"
+                            : ""}
                         </span>
                       ))}
                     </div>
 
                     <Link
                       to={`/work/${project.id}`}
-                      className="text-xs font-semibold text-blue-400 group-hover:text-blue-300 flex items-center gap-1"
-                    >
+                      className="text-xs font-semibold text-blue-400 group-hover:text-blue-300 flex items-center gap-1">
                       Case Study ↗
                     </Link>
                   </div>
@@ -294,15 +321,17 @@ export default function WorkPage() {
         {/* Bottom CTA */}
         <div className="mt-24 p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-blue-950/20 via-[#12141c] to-[#0a0b0e] border border-blue-500/20 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-display text-2xl font-bold text-white">Have a project you want built?</h3>
+            <h3 className="font-display text-2xl font-bold text-white">
+              Have a project you want built?
+            </h3>
             <p className="text-sm text-neutral-300 mt-1 max-w-lg">
-              Let's create something modern, responsive, and tailored specifically to your audience.
+              Let's create something modern, responsive, and tailored
+              specifically to your audience.
             </p>
           </div>
           <Link
             to="/contact"
-            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shadow-lg shadow-blue-600/25"
-          >
+            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs uppercase tracking-wider rounded-md transition-colors whitespace-nowrap shadow-lg shadow-blue-600/25">
             Start a Conversation ↗
           </Link>
         </div>

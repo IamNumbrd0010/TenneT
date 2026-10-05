@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
   --color-accent: #2563eb;
   --color-accent-light: #3b82f6;
   --color-accent-cyan: #38bdf8;
@@ -26,13 +28,19 @@ body {
 }
 
 /* Typography helper */
-h1, h2, h3, .font-display {
+h1,
+h2,
+h3,
+.font-display {
   font-family: var(--font-display);
 }
 
 /* Subtle editorial grain background */
 .bg-grain {
-  background-image: radial-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 0);
+  background-image: radial-gradient(
+    rgba(59, 130, 246, 0.05) 1px,
+    transparent 0
+  );
   background-size: 28px 28px;
 }
 
@@ -50,11 +58,26 @@ h1, h2, h3, .font-display {
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
 }
+/* web carousel */
+@keyframes heroCarouselFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Smooth Marquee text ribbon */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -69,8 +92,13 @@ h1, h2, h3, .font-display {
 
 /* Subtle floating pulse */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .animate-float {
@@ -88,7 +116,9 @@ h1, h2, h3, .font-display {
 
 /* Accessibility: respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

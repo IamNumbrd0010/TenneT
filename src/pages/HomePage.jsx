@@ -322,7 +322,7 @@ export default function HomePage() {
                       <BrowserMockup
                         src={project.image}
                         alt={project.title}
-                        url={`https://${project.id}.tennet.studio`}
+                        url={`${project.liveUrl}`}
                         title={project.title}
                         category={project.category}
                         liveUrl={project.liveUrl}
@@ -410,7 +410,7 @@ export default function HomePage() {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
 
-                      {project.liveUrl && (
+                      {
                         <a
                           href={project.liveUrl}
                           target="_blank"
@@ -419,7 +419,7 @@ export default function HomePage() {
                           <ArrowUpRight className="w-3.5 h-3.5 text-blue-400" />
                           <span>Live Site</span>
                         </a>
-                      )}
+                      }
                     </div>
                   </div>
                 </article>

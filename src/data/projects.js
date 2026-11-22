@@ -81,7 +81,7 @@ export const projects = [
       "Existing real estate platforms overwhelmed buyers with chaotic card grids, clutter, and slow image loading that detracted from multi-million dollar property presentations.",
     solution:
       "Designed an editorial, high-contrast black & warm-charcoal gallery aesthetic with fluid filtering, razor-sharp responsive layouts, and zero visual clutter.",
-    liveUrl: "https://iamnumbrd0010.github.io/Anyreals/index.html",
+    liveUrl: "https://www.anyreals.com",
     githubUrl: "https://iamnumbrd0010.github.io/Anyreals/index.html",
   },
 
@@ -119,8 +119,8 @@ export const projects = [
       "The academy needed an authentic, respectful visual identity that resonated with busy executives seeking focus and discipline rather than a typical loud gym website.",
     solution:
       "Crafted a disciplined Japanese cedar-and-charcoal visual language with clear schedules, philosophical tenets, and a straightforward introductory consultation system.",
-    liveUrl: "www.tedojo.ng",
-    githubUrl: "www.tedojo.ng",
+    liveUrl: "https://www.tedojo.ng/",
+    githubUrl: "https://iamnumbrd0010.github.io/tedojo",
   },
   {
     id: "Raphae-tours",
